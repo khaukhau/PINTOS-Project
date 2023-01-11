@@ -1,12 +1,20 @@
 # PINTOS-Project
-aaaaaaaaaaaaaaa
+* Team member: Khau Lien Kiet
+* Course: Operating Systems - CSED312
+* Conducted by: Pohang University of Science and Technology (POSTECH)
+* Description: The main idea of the project is to learn the basic concept of process/thread, user program, virtual memory, file and I/O, and security.
+
+
 
 ## Project 1
-* aaaaaaaaaaaaaaa
+* Theme: Threads
+* Discussion: During the project 1, I have simultaneously applied the knowledge from the lecture toward the implementation and learned from the solution itself. In terms of the Alarm Clock section, from the naïve PINTOS, instead of applying the busy waiting – which could be wasted for our resource, the strategy tends to let the thread sleep directly (performed as the blocked state) within the certain amount of sleeping time and wake it up afterwards. Regarding the Priority Scheduling part, priority donation is not meticulously introduced in the lecture. However, I did acquire this knowledge from the project within two ways to resolve the priority inversion, which are Nested Donation and Multiple Donation. By these strategies, it is guaranteed that the high priority thread could be executed instead of being preempted by another lower priority thread. As regards to Advanced Scheduler, I could understand rigorously the mechanism behind Multi-level Feedback Queue Scheduling (MLFQS) and thus apply these main ideas in the implementation. For instance, to implement it, there are introduced with three more variable (nice, recent_cpu, load_avg) to determine the priority for each thread at one priority level. As the priority is changing dynamically under MLFQS, the target threads have more tendency to use the CPU and get executed during its turn.
 
 ## Project 2
-* aaaaaaaaaaaaaaa
+* Theme: User Programs
+* Discussion: From the project 2, I have acquired much knowledge regarding the process execution and system call mechanism. When it comes to the big picture of process procedure, it would run through bunch of the functions (i.e. run_action(), run_task(), process_wait(), process_execute()) to set up and initialize the thread before its creation. If that thread is getting scheduled, it is required to start a process and load from disk to memory for starting to execute user program mode. By the naïve PINTOS implementation, it is essential to modify an initial stage, which is parsing the file name to let it get ready for thread creation. On the other hand, system calls are the most important part for this project since the program should be switched from user mode to kernel mode for having more privilege of manipulating the user process or its file system. By calling interrupt inside the user program, it would send the signal towards syscall_handlers() afterwards. Indeed, under the scope of OS management, this handler would notice which system call is invoked and thus allocating to the newly created function in the project for each syscall case. However, there is one thing to consider which is memory leakage when the process is at the end of its procedure or page fault is occurred during system call handling. Therefore, it is vital to modify several part of page_fault() in order to prevent those edgy scenarios.
 
 ## Project 3
-* aaaaaaaaaaaaaaa
+* Theme: Virtual Memory
+* Discussion: From the project 3, I have more understanding in terms of the current PINTOS system. It does support the multiprogramming and load the entire executable file (date, code, stack segments) into memory at once before getting executed a program. By this approach, it is inefficient since there are not all files executed and thus leading the recourse waste in the memory. Therefore, it is necessary to implement the concept of Lazy Loading according to the page type, particularly the file-backed pages. Furthermore, the physical address of each page in the virtual address space are fixed at the beginning, thus resulting in the fixed size of stack on each process. Hence, Stack Growth is the idea to consider the expandable stack to resolve the fixed size of stack in the naïve PINTOS. In addition, when it comes to anonymous page, its performance is not the same as the file-backed pages. Thus, it is required to implement the concept of Swap Table, which is still resided in the disk but it is on the swap partition. Finally, to connect the file between the memory and disk, File Memory Mapping is required to binding a mapping file to fulfill its requirements.
 
