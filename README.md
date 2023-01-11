@@ -1,4 +1,4 @@
-Project 2 - User Programs
+# Project 2 - User Programs
 
 Regarding the Design Report, I would clearly analyze the implementation of naive PINTOS and thus resulting to its improvement. When it comes to the Final Report, I would elaborate on the procedure of implementing the ideas stated in the previous report. 
 
